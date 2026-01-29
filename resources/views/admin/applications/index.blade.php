@@ -19,10 +19,23 @@
     <div class="col-md-2">
         <select name="status" class="form-select">
             <option value="">Semua Status</option>
-            <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
-            <option value="accepted" {{ request('status') == 'accepted' ? 'selected' : '' }}>Diterima</option>
-            <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Ditolak</option>
+            <option value="applied" {{ request('status') == 'applied' ? 'selected' : '' }}>
+                Applied
+            </option>
+            <option value="screening" {{ request('status') == 'screening' ? 'selected' : '' }}>
+                Screening
+            </option>
+            <option value="interview" {{ request('status') == 'interview' ? 'selected' : '' }}>
+                Interview
+            </option>
+            <option value="accepted" {{ request('status') == 'accepted' ? 'selected' : '' }}>
+                Diterima
+            </option>
+            <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>
+                Ditolak
+            </option>
         </select>
+
     </div>
 
     <div class="col-md-3">
@@ -112,10 +125,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td><a href="/jobs/${app.job.id}" class="text-decoration-none">${app.job.title}</a></td>
                     <td>
                         <span class="badge bg-${app.status === 'accepted' ? 'success' : (app.status === 'rejected' ? 'danger' : 'warning')}">
-                            ${app.status_label}
+                            ${app.status}
                         </span>
                     </td>
-                    <td>${app.screening_result ? `<span class="badge bg-info">${app.screening_result_label}</span>` : '<span class="text-muted">-</span>'}</td>
+                    <td>${app.screening_result ? `<span class="badge bg-info">${app.screening_result}</span>` : '<span class="text-muted">-</span>'}</td>
                     <td>${app.current_step.charAt(0).toUpperCase() + app.current_step.slice(1)}</td>
                     <td>${(new Date(app.created_at)).toLocaleDateString('id-ID', {day:'2-digit', month:'short', year:'numeric'})}</td>
                     <td>

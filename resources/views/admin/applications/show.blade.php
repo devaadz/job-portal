@@ -153,7 +153,7 @@
                 @if($application->screening_result)
                     <p>
                         <strong>Status:</strong> 
-                        <span class="badge bg-info">{{ $application->screeningResultLabelAttribute }}</span>
+                        <span class="badge bg-info">{{ $application->screening_result }}</span>
                     </p>
                 @else
                     <p class="text-muted">Belum di-screening</p>
