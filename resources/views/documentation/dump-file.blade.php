@@ -1,57 +1,102 @@
- ↓
-    @extends('layouts.app')
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Portal - Dokumentasi Alur Aplikasi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-@section('title', 'Dokumentasi Penggunaan')
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-@section('content')
-<div class="py-4">
-    <h1 class="mb-4 text-center fw-bold">Dokumentasi Penggunaan Aplikasi Job Portal</h1>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
 
-    <div class="row mb-5">
-        @foreach($features as $feature)
-            <div class="col-md-6 mb-4">
-                <div class="card h-100 shadow-sm border-primary">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">{{ $feature['title'] }}</h5>
-                        <p class="card-text">{{ $feature['description'] }}</p>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
 
-    <div class="card mb-5">
-        <div class="card-header bg-primary text-white fw-semibold">Contoh Akun Login (Demo)</div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <h6 class="fw-bold">Akun Admin</h6>
-                    <ul class="list-group mb-3">
-                        <li class="list-group-item">Email: <b>admin@careerportal.com</b> | Password: <b>admin123</b></li>
-                        <li class="list-group-item">Email: <b>hr.admin@careerportal.com</b> | Password: <b>admin123</b></li>
-                        <li class="list-group-item">Email: <b>tech.admin@careerportal.com</b> | Password: <b>admin123</b></li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <h6 class="fw-bold">Akun Applicant</h6>
-                    <ul class="list-group">
-                        <li class="list-group-item">Email: <b>budi.santoso@email.com</b> | Password: <b>applicant123</b></li>
-                        <li class="list-group-item">Email: <b>siti.nurhaliza@email.com</b> | Password: <b>applicant123</b></li>
-                        <li class="list-group-item">Email: <b>ahmad.ridho@email.com</b> | Password: <b>applicant123</b></li>
-                        <li class="list-group-item">Email: <b>reza.firmansyah@email.com</b> | Password: <b>applicant123</b></li>
-                        <li class="list-group-item">Email: <b>dini.wijaya@email.com</b> | Password: <b>applicant123</b></li>
-                        <li class="list-group-item">Email: <b>fajar.santoso@email.com</b> | Password: <b>applicant123</b></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
 
-    <div class="card mb-5">
-        <div class="card-header bg-primary text-white fw-semibold">Visualisasi Skema Database</div>
-        <div class="card-body">
-            <pre class="bg-light p-3 rounded small">
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2::before {
+            content: '▶';
+            font-size: 1.2em;
+        }
+
+        .flow-diagram {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .flow-step .number {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
             margin-right: 15px;
             flex-shrink: 0;
@@ -80,63 +125,19 @@
             margin: 5px 0;
         }
 
-        </div>
-    </div>
-
-    <div class="card mb-5">
-        <div class="card-header bg-primary text-white fw-semibold">Dokumentasi Lengkap</div>
-        <div class="card-body">
-            <h5>Ringkasan Proyek</h5>
-            <pre class="bg-light p-3 rounded small">
         .info-box {
             background: #e7f3ff;
             border-left: 4px solid #2196F3;
             padding: 15px;
             border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .info-box strong {
+            color: #1976D2;
+        }
+
         .warning-box {
-            <h5 class="mt-4">Fitur Utama</h5>
-            <ul>
-                <li>Registrasi & login</li>
-                <li>Kelola profil lengkap (CV, skill, pendidikan, pengalaman)</li>
-                <li>Cari & lamar pekerjaan</li>
-                <li>Dashboard admin & applicant</li>
-                <li>Screening otomatis & status lamaran</li>
-                <li>Manajemen skill & user</li>
-                <li>Riwayat lamaran & audit trail</li>
-            </ul>
-            <h5 class="mt-4">Panduan Instalasi & Setup</h5>
-            <ol>
-                <li>Clone project & copy .env</li>
-                <li>Generate application key</li>
-                <li>Konfigurasi database di .env</li>
-                <li>Install dependencies (composer, npm)</li>
-                <li>Migrasi database</li>
-                <li>Jalankan server: <code>php artisan serve</code></li>
-            </ol>
-            <h5 class="mt-4">Testing & Akun Demo</h5>
-            <ul>
-                <li>Login admin: <b>admin@careerportal.com</b> / <b>admin123</b></li>
-                <li>Login applicant: <b>budi.santoso@email.com</b> / <b>applicant123</b></li>
-                <li>Register applicant baru & coba apply pekerjaan</li>
-            </ul>
-            <h5 class="mt-4">Checklist Implementasi</h5>
-            <ul>
-                <li>Database & migrations</li>
-                <li>Models & relationships</li>
-                <li>Controllers & services</li>
-                <li>Authentication & authorization</li>
-                <li>Routes & views</li>
-                <li>Testing & seeder</li>
-            </ul>
-            <h5 class="mt-4">Catatan Middleware</h5>
-            <ul>
-                <li>Route <code>/dokumentasi</code> hanya untuk admin (auth, admin)</li>
-                <li>Route applicant & admin sudah diproteksi sesuai role</li>
-            </ul>
-        </div>
-    </div>
-</div>
-@endsection
             background: #fff3e0;
             border-left: 4px solid #ff9800;
             padding: 15px;
@@ -456,25 +457,26 @@
                     </tr>
                     <tr>
                         <td>Session Store</td>
-                        <div class="list-group">
-                            @foreach($features as $feature)
-                                <div class="list-group-item mb-3">
-                                    <h5 class="mb-1">{{ $feature['title'] }}</h5>
-                                    <p class="mb-1">{{ $feature['description'] }}</p>
-                                </div>
-                            @endforeach
-                        </div>
+                        <td><span class="highlight">sessions</span></td>
+                        <td>user_id, payload, ip_address, user_agent</td>
+                    </tr>
+                </table>
 
-                        <hr class="my-5">
-                        <h2 class="mb-3">Dokumentasi Lengkap</h2>
-                        <div class="mb-4">
-                            <h4>Ringkasan Proyek</h4>
-                            <pre class="bg-light p-3 rounded small">@verbatim
+                <h3 style="margin-top: 25px; color: #667eea;">🧪 Test Login</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
                         <h4>👨‍💼 Login sebagai Applicant</h4>
                         <p><strong>Email:</strong> budi.santoso@email.com</p>
                         <p><strong>Password:</strong> applicant123</p>
                         <p><strong>Redirect:</strong> /dashboard</p>
                         <p><strong>Role:</strong> applicant</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>👨‍💼 Login sebagai Admin</h4>
+                        <p><strong>Email:</strong> admin@careerportal.com</p>
+                        <p><strong>Password:</strong> admin123</p>
+                        <p><strong>Redirect:</strong> /admin/dashboard</p>
+                        <p><strong>Role:</strong> admin</p>
                     </div>
                 </div>
             </div>
@@ -489,13 +491,23 @@
                         <div class="content">
                             <div class="label">Akses halaman register</div>
                             <div class="description">User membuka halaman pendaftaran</div>
+                            <div class="url-box">GET /register</div>
+                        </div>
+                    </div>
 
-                            <h4 class="mt-4">Fitur Utama</h4>
-                            <pre class="bg-light p-3 rounded small">@verbatim
+                    <div class="arrow">↓</div>
+
                     <div class="flow-step">
+                        <div class="number">2</div>
+                        <div class="content">
+                            <div class="label">Tampil form register</div>
+                            <div class="description">Form dengan field: Name, Email, Password, Confirm Password</div>
+                        </div>
+                    </div>
+
+                    <div class="arrow">↓</div>
+
                     <div class="flow-step">
-                            <h4 class="mt-4">Panduan Instalasi & Setup</h4>
-                            <pre class="bg-light p-3 rounded small">@verbatim
                         <div class="number">3</div>
                         <div class="content">
                             <div class="label">Input data baru</div>
@@ -504,8 +516,6 @@
                     </div>
 
                     <div class="arrow">↓</div>
-                            <h4 class="mt-4">Testing & Akun Demo</h4>
-                            <pre class="bg-light p-3 rounded small">@verbatim
 
                     <div class="flow-step">
                         <div class="number">4</div>
@@ -519,168 +529,159 @@
                     <div class="arrow">↓</div>
 
                     <div class="flow-step">
-                            <h4 class="mt-4">Checklist Implementasi</h4>
-                            <pre class="bg-light p-3 rounded small">@verbatim
                         <div class="number">5</div>
+                        <div class="content">
+                            <div class="label">Validasi data</div>
+                            <div class="description">
+                                Controller <span class="highlight">RegisteredUserController@store</span> 
+                                melakukan validasi:
+                                <ul style="margin-top: 8px; margin-left: 20px;">
+                                    <li>Name: required, max 255 karakter</li>
+                                    <li>Email: required, valid format, unique di database</li>
+                                    <li>Password: required, min 8 karakter, harus match confirm</li>
                                 </ul>
-                            <h4 class="mt-4">Seeder & Data Dummy</h4>
-                            <pre class="bg-light p-3 rounded small">@verbatim
-                            </div>
-                    <div class="arrow">↓</div>
-                            <h4 class="mt-4">Status Proyek</h4>
-                            <pre class="bg-light p-3 rounded small">@verbatim
-
-                        <div class="py-4">
-                            <h1 class="mb-4 text-center fw-bold">Dokumentasi Penggunaan Aplikasi Job Portal</h1>
-
-                            <div class="row mb-5">
-                                @foreach($features as $feature)
-                                    <div class="col-md-6 mb-4">
-                                        <div class="card h-100 shadow-sm border-primary">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-primary">{{ $feature['title'] }}</h5>
-                                                <p class="card-text">{{ $feature['description'] }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-
-                            <div class="card mb-5">
-                                <div class="card-header bg-primary text-white fw-semibold">Contoh Akun Login (Demo)</div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h6 class="fw-bold">Akun Admin</h6>
-                                            <pre class="bg-light p-3 rounded small">@verbatim
-                        Email: admin@careerportal.com
-                        Password: admin123
-
-                        Email: hr.admin@careerportal.com
-                        Password: admin123
-
-                        Email: tech.admin@careerportal.com
-                        Password: admin123
-                        @endverbatim</pre>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <h6 class="fw-bold">Akun Applicant</h6>
-                                            <pre class="bg-light p-3 rounded small">@verbatim
-                        Email: budi.santoso@email.com
-                        Password: applicant123
-
-                        Email: siti.nurhaliza@email.com
-                        Password: applicant123
-
-                        Email: ahmad.ridho@email.com
-                        Password: applicant123
-
-                        Email: reza.firmansyah@email.com
-                        Password: applicant123
-
-                        Email: dini.wijaya@email.com
-                        Password: applicant123
-
-                        Email: fajar.santoso@email.com
-                        Password: applicant123
-                        @endverbatim</pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card mb-5">
-                                <div class="card-header bg-primary text-white fw-semibold">Visualisasi Skema Database</div>
-                                <div class="card-body">
-                                    <pre class="bg-light p-3 rounded small">@verbatim
-                        users                    applicants              jobs
-                        ├── id (PK)             ├── id (PK)            ├── id (PK)
-                        ├── name                ├── user_id (FK)       ├── title
-                        ├── email               ├── full_name          ├── description
-                        ├── password            ├── phone              ├── is_active
-                        ├── role (enum)         ├── short_desc         └── timestamps
-                        └── timestamps          └── timestamps
-
-                                    ↓                           ↓
-                            applicant_skills            job_skills
-                            (pivot table)               (pivot table)
-
-                                    ↓                           ↓
-                                skills                    applications
-                                ├── id                    ├── id
-                                ├── name                  ├── applicant_id (FK)
-                                └── timestamps            ├── job_id (FK)
-                                                          ├── status
-                                                          ├── screening_result
-                                                          └── timestamps
-                                                                ↓
-                                                          application_logs
-                                                          ├── id
-                                                          ├── application_id (FK)
-                                                          ├── old_status
-                                                          ├── new_status
-                                                          └── changed_by (FK)
-                        @endverbatim</pre>
-                                </div>
-                            </div>
-
-                            <div class="card mb-5">
-                                <div class="card-header bg-primary text-white fw-semibold">Dokumentasi Lengkap</div>
-                                <div class="card-body">
-                                    <h5>Ringkasan Proyek</h5>
-                                    <pre class="bg-light p-3 rounded small">@verbatim
-                        # CAREER PORTAL MVP - COMPLETE PROJECT SUMMARY
-
-                        ## PROJECT STATUS: FULLY COMPLETE & READY TO USE
-
-                        A production-ready Laravel 11 Career Portal application with complete:
-                        ...existing code...
-                        @endverbatim</pre>
-                                    <h5 class="mt-4">Fitur Utama</h5>
-                                    <pre class="bg-light p-3 rounded small">@verbatim
-                        # Fitur Utama
-                        ...existing code...
-                        @endverbatim</pre>
-                                    <h5 class="mt-4">Panduan Instalasi & Setup</h5>
-                                    <pre class="bg-light p-3 rounded small">@verbatim
-                        # Instalasi
-                        ...existing code...
-                        @endverbatim</pre>
-                                    <h5 class="mt-4">Testing & Akun Demo</h5>
-                                    <pre class="bg-light p-3 rounded small">@verbatim
-                        # Akun Admin
-                        Email: admin@careerportal.com
-                        Password: admin123
-
-                        # Akun Applicant
-                        Email: budi.santoso@email.com
-                        Password: applicant123
-                        ...existing code...
-                        @endverbatim</pre>
-                                    <h5 class="mt-4">Checklist Implementasi</h5>
-                                    <pre class="bg-light p-3 rounded small">@verbatim
-                        # Implementation Checklist
-                        ...existing code...
-                        @endverbatim</pre>
-                                    <h5 class="mt-4">Seeder & Data Dummy</h5>
-                                    <pre class="bg-light p-3 rounded small">@verbatim
-                        # Seeder
-                        ...existing code...
-                        @endverbatim</pre>
-                                    <h5 class="mt-4">Status Proyek</h5>
-                                    <pre class="bg-light p-3 rounded small">@verbatim
-                        # Complete Status
-                        ...existing code...
-                        @endverbatim</pre>
-                                    <h5 class="mt-4">Catatan Middleware</h5>
-                                    <pre class="bg-light p-3 rounded small">@verbatim
-                        # Middleware
-                        ...existing code...
-                        @endverbatim</pre>
-                                </div>
                             </div>
                         </div>
-                        @endsection
+                    </div>
+
+                    <div class="arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="number">6</div>
+                        <div class="content">
+                            <div class="label">Hash password</div>
+                            <div class="description">Password di-encrypt menggunakan bcrypt sebelum disimpan</div>
+                        </div>
+                    </div>
+
+                    <div class="arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="number">7</div>
+                        <div class="content">
+                            <div class="label">Buat user account</div>
+                            <div class="description">
+                                Insert ke tabel <span class="highlight">users</span> dengan field:
+                                <ul style="margin-top: 8px; margin-left: 20px;">
+                                    <li>name: input dari form</li>
+                                    <li>email: input dari form</li>
+                                    <li>password: hashed password</li>
+                                    <li><strong>role: 'applicant'</strong> (default untuk user baru)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="number">8</div>
+                        <div class="content">
+                            <div class="label">Buat applicant profile</div>
+                            <div class="description">
+                                Otomatis membuat record di tabel <span class="highlight">applicants</span> 
+                                yang berelasi dengan user
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="number">9</div>
+                        <div class="content">
+                            <div class="label">Auto-login user</div>
+                            <div class="description">User langsung di-login tanpa perlu login ulang</div>
+                        </div>
+                    </div>
+
+                    <div class="arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="number">10</div>
+                        <div class="content">
+                            <div class="label">Create session</div>
+                            <div class="description">Session baru dibuat dan disimpan di database</div>
+                        </div>
+                    </div>
+
+                    <div class="arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="number">11</div>
+                        <div class="content">
+                            <div class="label">Redirect ke dashboard applicant</div>
+                            <div class="description">
+                                Langsung diarahkan ke dashboard untuk melengkapi profil
+                            </div>
+                            <div class="url-box">Redirect ke /dashboard (route: applicant.dashboard)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-box">
+                    <strong>✅ Proses Register Selesai:</strong> User sudah memiliki akun 
+                    dengan role <span class="highlight">applicant</span> dan profile siap untuk diisi data tambahan.
+                </div>
+
+                <h3 style="margin-top: 25px; color: #667eea;">💾 Tabel yang Terisi Saat Register</h3>
+                <table>
+                    <tr>
+                        <th>Tabel</th>
+                        <th>Aksi</th>
+                        <th>Data yang Diisi</th>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">users</span></td>
+                        <td>INSERT</td>
+                        <td>name, email, password (hashed), role='applicant'</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">applicants</span></td>
+                        <td>INSERT</td>
+                        <td>user_id (FK), full_name, phone (empty), created_at</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">sessions</span></td>
+                        <td>INSERT</td>
+                        <td>id, user_id, payload, last_activity, ip_address, user_agent</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- APPLY JOB SECTION -->
+            <div class="section">
+                <h2>💼 ALUR APPLY JOB (Melamar Pekerjaan)</h2>
+
+                <div class="warning-box">
+                    <strong>⚠️ Prasyarat:</strong> User HARUS sudah login sebagai 
+                    <span class="highlight">applicant</span> untuk bisa apply job.
+                </div>
+
+                <div class="flow-diagram">
+                    <div class="flow-step">
+                        <div class="number">1</div>
+                        <div class="content">
+                            <div class="label">Lihat daftar job</div>
+                            <div class="description">User mengakses halaman daftar lowongan pekerjaan</div>
+                            <div class="url-box">GET /jobs</div>
+                        </div>
+                    </div>
+
+                    <div class="arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="number">2</div>
+                        <div class="content">
+                            <div class="label">Lihat detail job</div>
+                            <div class="description">User klik salah satu job untuk melihat detail lengkap</div>
+                            <div class="url-box">GET /jobs/{job_id}</div>
+                        </div>
+                    </div>
+
+                    <div class="arrow">↓</div>
+
+                    <div class="flow-step">
                         <div class="number">3</div>
                         <div class="content">
                             <div class="label">Tampil detail job dengan tombol apply</div>
@@ -1197,14 +1198,14 @@
                 <p>
                     Dokumentasi ini menjelaskan alur aplikasi Career Portal secara detail.
                     Jika ada pertanyaan atau kebingungan, silakan baca kembali section yang relevan
-                    atau hubungi developer.
+                    atau hubungi development team.
                 </p>
                 <a href="/" class="nav-button" style="background: white; color: #667eea;">← Kembali ke Home</a>
             </div>
         </div>
 
         <div class="footer">
-            <p>Career Portal Documentation v1.0</p>
+            <p>📄 Career Portal Documentation v1.0</p>
             <p>Generated: January 26, 2026 | Updated: Dokumentasi Alur Aplikasi</p>
         </div>
     </div>
